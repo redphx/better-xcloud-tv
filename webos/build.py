@@ -80,7 +80,7 @@ manifest = {
     'version': script_version,
     'type': 'web',
     'title': 'Better xCloud',
-    'iconUri': 'https://raw.githubusercontent.com/redphx/better-xcloud-tv/main/webos/src/largeIcon.png',
+    'iconUri': 'https://raw.githubusercontent.com/redphx/better-xcloud-webos/main/assets/largeIcon.png',
     'sourceUrl': 'https://github.com/redphx/better-xcloud-webos',
     'rootRequired': False,
     'ipkUrl': ipk_name,
