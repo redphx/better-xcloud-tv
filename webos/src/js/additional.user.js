@@ -10,5 +10,8 @@ if (!window.location.pathname.includes('/play')) {
 window.BX_FLAGS = {
     CheckForUpdate: false,
     SafariWorkaround: false,
-    ScriptUi: 'tv',
+
+    DeviceInfo: {
+        deviceType: 'webos',
+    },
 };
