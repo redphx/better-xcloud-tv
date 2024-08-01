@@ -1,0 +1,86 @@
+name: Bug Report 🐞
+description: File a bug report
+title: "[Bug] "
+labels:
+  - bug
+body:
+  - type: checkboxes
+    id: checklist
+    attributes:
+      label: Checklist
+      options:
+        - label: I will only use English in my report.
+          required: true
+        - label: I have used the search function for [**open and closed issues**](https://github.com/redphx/better-xcloud/issues?q=is%3Aissue) to see if someone else has already submitted the same bug report.
+          required: true
+        - label: I will describe the problem with as much detail as possible.
+          required: true
+  - type: checkboxes
+    id: questions
+    attributes:
+      label: Questions
+      options:
+        - label: xCloud officially supports my country/region.
+          required: false
+        - label: "The bug didn't happen in previous Better xCloud version (name which one)."
+          required: false
+  - type: input
+    id: tv_model
+    attributes:
+      label: Device
+      description: "Which TV model are you using?"
+    validations:
+      required: true
+  - type: input
+    id: os
+    attributes:
+      label: "Operating System"
+      description: "Which operating system is it running?"
+      placeholder: "e.g., webOS 8.0"
+    validations:
+      required: true
+  - type: textarea
+    id: browser_user_agent
+    attributes:
+      label: "Browser User-Agent"
+      description: "Open [whatmyuseragent.com](https://whatmyuseragent.com/) in the Browser app, then share photo of the result"
+      placeholder: "e.g., Chrome 124.0, Android app 0.15.0"
+    validations:
+      required: true
+  - type: input
+    id: app_version
+    attributes:
+      label: "Better xCloud Version"
+      description: "What is the version of Better xCloud app?"
+      placeholder: "e.g., 5.5.0"
+    validations:
+      required: true
+  - type: input
+    id: game_list
+    attributes:
+      label: "Game list"
+      description: "Name the game(s) where you saw this bug"
+      placeholder: "e.g., Halo"
+    validations:
+      required: false
+  - type: textarea
+    id: reproduction
+    attributes:
+      label: "Reproduction Steps"
+      description: |
+        How did you trigger this bug?
+      placeholder: |
+        Example:
+        1. Open game X
+        2. Click on Y
+        3. Error
+    validations:
+      required: true
+  - type: textarea
+    id: media
+    attributes:
+      label: "Screenshot/video"
+      description: |
+        Please provide screenshot/video if possible.
+    validations:
+      required: false
