@@ -44,7 +44,7 @@ body:
     attributes:
       label: "Browser User-Agent"
       description: "Open [whatmyuseragent.com](https://whatmyuseragent.com/) in the Browser app, then share photo of the result"
-      placeholder: "e.g., Chrome 124.0, Android app 0.15.0"
+      placeholder: "e.g., Mozilla/5.0 (Web0S; Linux/SmartTV) AppleWebKit/537.36 (KHTML, like Gecko) Chr0me/108.0.5359.211 Safari/537.36 LG Browser/8.00.00(LGE; WEBOS22; 00.00.00; 0x00000001; DTV_H23H); webOS.TV-2022; LG NetCast.TV-2013 Compatible (LGE, WEBOS22, wired)"
     validations:
       required: true
   - type: input
