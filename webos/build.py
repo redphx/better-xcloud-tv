@@ -2,11 +2,12 @@ import hashlib
 import json
 import os
 import re
-import requests
 import shutil
 import subprocess
 
-USERSCRIPT_URL = 'https://github.com/redphx/better-xcloud/releases/latest/download/better-xcloud.user.js'
+import requests
+
+USERSCRIPT_URL = 'https://github.com/redphx/better-xcloud/raw/refs/heads/typescript/dist/better-xcloud.lite.user.js'
 # USERSCRIPT_URL = 'https://github.com/redphx/better-xcloud/raw/main/better-xcloud.user.js'
 
 # Read additional code
@@ -17,12 +18,10 @@ try:
     with open('src/js/local.user.js', 'r') as file:
         print('Use local userscript!')
         content = file.read()
-except:
+except Exception:
     # Download userscript
     print('Downloading userscript...')
     content = requests.get(USERSCRIPT_URL).content.decode('UTF-8')
-
-    
 
 # Inject additional code
 content = content.replace('/* ADDITIONAL CODE */', addintional_code)
@@ -31,6 +30,9 @@ content = content.replace('/* ADDITIONAL CODE */', addintional_code)
 version_pattern = re.compile(r'SCRIPT_VERSION = "([^"]+)"')
 match = version_pattern.search(content)
 script_version = match.group(1)
+
+# Remove "-beta" from version
+script_version = script_version.replace('-beta', '')
 
 print('Building version', script_version, '...')
 
@@ -44,7 +46,7 @@ shutil.rmtree('tmp/js', ignore_errors=True)
 os.makedirs('tmp/webOSUserScripts', exist_ok=True)
 
 # Write to userScript.js file
-print ('Saving to file...')
+print('Saving to file...')
 with open('tmp/webOSUserScripts/userScript.js', 'w') as file:
     file.write(content)
 
@@ -61,13 +63,13 @@ shutil.rmtree('dist', ignore_errors=True)
 os.makedirs('dist')
 
 # Build file
-subprocess.run(['ares-package', '-n', '-o', 'dist', 'tmp']) 
+subprocess.run(['ares-package', '-n', '-o', 'dist', 'tmp'])
 ipk_name = f'com.redphx.better-xcloud_{script_version}_all.ipk'
 
 # Calculate SHA256 hash
 with open(f'dist/{ipk_name}', 'rb', buffering=0) as fp:
-    h  = hashlib.sha256()
-    b  = bytearray(128 * 1024)
+    h = hashlib.sha256()
+    b = bytearray(128 * 1024)
     mv = memoryview(b)
     while n := fp.readinto(mv):
         h.update(mv[:n])

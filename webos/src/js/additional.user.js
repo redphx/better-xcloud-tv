@@ -1,5 +1,5 @@
 if (window.location.pathname.startsWith('/oauth20_authorize.srf')) {
-    window.location = 'https://www.xbox.com/play/login/deviceCode';
+    window.location = 'https://www.xbox.com/en-US/play/login/deviceCode';
     throw new Error('[Better xCloud] Ignore');
 }
 
